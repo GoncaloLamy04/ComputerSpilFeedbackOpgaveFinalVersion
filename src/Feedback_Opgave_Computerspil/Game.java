@@ -7,10 +7,7 @@ public class Game {
     private String genre;
     private double price;
 
-    public static void main(String[] args) {
-
-    }
-
+    // Opretter spil med info, bruger setPrice for at undgå negativ pris
     public Game(int gameId, String title, String genre, double price) {
         this.gameId = gameId;
         this.title = title;
@@ -34,17 +31,25 @@ public class Game {
     public double getPrice() {return price;}
 
     public void setPrice(double price) {
+        if (price < 0) throw new IllegalArgumentException("Price cannot be negative");
         this.price = price;
     }
 
     // printer alle detaljer om spillet
     public void displayDetails() {
-        System.out.println("Game ID: " + gameId + ", Title: " + title + ", Genre: " + genre + ", Price: " + price + " DKK");
+        System.out.println("Game Id: " + gameId);
+        System.out.println("Title: " + title);
+        System.out.println("Genre: " + genre);
+        System.out.println("Price: " + price);
     }
 
-
-
+    // nemt print i én linje (bruges fx i GameSystem)
+    @Override
+    public String toString() {
+        return "Game ID: " + gameId + " | Title: " + title + " | Genre: " + genre + " | Price: " + price + " DKK";
+    }
 }
+
 
 
 

@@ -1,4 +1,4 @@
-import java.util.ArrayList;
+package Feedback_Opgave_Computerspil;
 
 public class GameSystem {
 
@@ -6,10 +6,6 @@ public class GameSystem {
     private Player[] players;
     private int gameCount;
     private int playerCount;
-
-    public static void main(String[] args) {
-
-    }
 
     public GameSystem(int maxGames, int maxPlayers) {
         games = new Game[maxGames];
@@ -29,14 +25,13 @@ public class GameSystem {
     public void addPlayer(Player player) {
         if (playerCount < players.length) {
             players[playerCount++] = player;
-            System.out.println("Player has been added: " + player.getName());
         } else {
             System.out.println("The player list is full");
         }
     }
 
     public void displayAllGames() {
-        System.out.println("\n--- All Games ---");
+        System.out.println("--- All Games ---");
         for (int i = 0; i < gameCount; i++) {
             System.out.println(games[i]);
         }
@@ -45,7 +40,7 @@ public class GameSystem {
     public void displayAllPlayers() {
         System.out.println("\n--- All Players ---");
         for (int i = 0; i < playerCount; i++) {
-            players[i].displayPlayerDetails();
+            System.out.println(players[i]);
         }
     }
 
@@ -58,6 +53,8 @@ public class GameSystem {
             System.out.println("Player with ID " + playerId + " not found.");
         }
     }
+
+    // Lineær søgning efter spil via id
     public Game findGameById(int gameId) {
         for (int i = 0; i < gameCount; i++) {
             if (games[i].getGameId() == gameId) {
@@ -85,17 +82,19 @@ public class GameSystem {
     }
 
     public Player findTopScoringPlayer() {
-        if (playerCount == 0) return null;{
-
+        if (playerCount == 0) {
+            System.out.println("No users found in system yet.");
+            return null;
         }
-            Player highest  = players[0];
-            for (int i = 1; i < playerCount; i++) {
-                if (players[i].getScore() > highest .getScore()) {
-                    highest = players[i];
-                }
+
+        Player top = players[0];
+        for (int i = 1; i < playerCount; i++) {
+            if (players[i].getScore() > top.getScore()) {
+                top = players[i];
             }
-        return highest;
+        }
+
+        System.out.println("Topscorer: " + top.getName() + " (" + top.getScore() + " point)");
+        return top;
     }
 }
-
-
