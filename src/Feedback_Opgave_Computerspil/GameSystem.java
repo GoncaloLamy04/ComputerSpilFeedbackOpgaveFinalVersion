@@ -24,7 +24,6 @@ public class GameSystem {
         } else {
             System.out.println("The game list is full");
         }
-
     }
 
     public void addPlayer(Player player) {
@@ -39,7 +38,7 @@ public class GameSystem {
     public void displayAllGames() {
         System.out.println("\n--- All Games ---");
         for (int i = 0; i < gameCount; i++) {
-            games[i].displayDetails();
+            System.out.println(games[i]);
         }
     }
 

@@ -36,5 +36,19 @@ public class Main {
         }
 
         System.out.println("Total revenue: " + system.calculateTotalRevenue() + " DKK");
+
+        System.out.println();
+        System.out.println("-! TRY/CATCH TEST !-");
+        // Læste om hvordan man gjorde dette for at teste fejl beskeder i programmet
+        try {
+            system.addGame(new Game(4, "Glitch Game", "RPG", -200));
+        } catch (IllegalArgumentException e) {
+            System.out.println("Error: " + e.getMessage());
+        }
+        try {
+            system.addPlayer(new Player(4, "Baby", -2, 500));
+        } catch (IllegalArgumentException e) {
+            System.out.println("Error: " + e.getMessage());
+        }
     }
 }
